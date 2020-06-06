@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div style="height: 30px; background-color: #000000; text-align: auto">
+		<a href="{% url 'enren:index' %}" style="text-decoration-line: none;color: #ffffff; float: right; ">learning_log</a>
+		<span style="color: #ffffff; float: right;">|</span>
+		<a href="{% url 'enren:topics' %}" style="text-decoration-line: none;color: #ffffff; float: right; ">Topics</a>
+		<span style="color: #ffffff; float: right;margin-right: 20px;">|</span>
+		<a href="{% url 'users:regester' %}" style="text-decoration-line: none; float: right; color: #ffffff;">Regester</a>
+		{% if user.is_authenticated %}
+		<a href="{% url 'users:logout' %}" style="color: #ffffff">logout</a>
+		<span style="color: #ffffff">Hello {{user.username}}</span>
+		{% else %}
+		<a href="{% url 'users:login' %}" style="color: #ffffff">login</a>
+		{% endif %}
+	</div>
+	<p>你好</p>
+	{% block content %}{% endblock content %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "enren/base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>编辑</title>
+</head>
+<body>
+{% block content %}
+	<a href="{% url 'enren:topic' topic.id %}">{{topic}}</a>
+	<form action="{% url 'enren:edit_entry' entry.id %}" method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button name='submite'>edit entry</button>
+	</form>
+{% endblock content %}
+</body>
+</html>

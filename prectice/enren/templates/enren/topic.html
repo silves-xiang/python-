@@ -1,0 +1,27 @@
+{% extends "enren/base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		主题页面
+	</title>
+</head>
+<body>
+	{% block content %}
+		<p>Topic:{{topic}}</p>
+		{% for entry in entries %}
+		<p>
+			{{ entry.date_added|date:'Y-M H:i' }}
+
+		</p>
+
+		<p>
+			{{ entry.text|linebreaks }}
+			<a href="{% url 'enren:edit_entry' entry.id %}">edit a entry</a>
+		</p>
+		{% endfor %}
+		<a href="{% url 'enren:new_entry' topic.id %}">add a entry</a>
+		
+	{% endblock content %}
+</body>
+</html>
